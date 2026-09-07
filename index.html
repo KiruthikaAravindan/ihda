@@ -65,6 +65,14 @@
       </button>
     </div>
 
+    <!-- Controls layout editor bar — shown only in edit mode (mobile) -->
+    <div id="ctrl-layout-bar">
+      <span class="ctrl-bar-label">Drag buttons to reposition</span>
+      <label class="ctrl-bar-label">Size <input type="range" id="ctrl-size" min="0.6" max="1.6" step="0.05" value="1"></label>
+      <button id="btn-ctrl-reset">Reset</button>
+      <button id="btn-ctrl-done">Done ✓</button>
+    </div>
+
     <button id="btn-action" class="hidden"></button>
     <div id="win-feedback" class="hidden">Did you enjoy the game? Have ideas or feedback?</div>
     <button id="btn-action-secondary" class="hidden">RESTART FROM L1  ▶</button>
@@ -95,6 +103,7 @@
       </div>
       <!-- Mobile-only: fullscreen + restart live here so touch-controls stay clean -->
       <div class="mobile-menu-actions">
+        <button id="btn-edit-controls" class="menu-action-btn">🎮 &nbsp;Edit Controls</button>
         <button id="btn-panel-fs" class="menu-action-btn">⛶ &nbsp;Fullscreen</button>
         <button id="btn-panel-restart" class="menu-action-btn">↺ &nbsp;Restart</button>
       </div>

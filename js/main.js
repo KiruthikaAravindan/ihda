@@ -7,6 +7,7 @@ import { platforms, coins, enemies, prizeBoxes, pigeons, boxItems } from './mode
 import './controller/input.js';
 import { resetGame, nextLevel, jumpToLevel, retryLevel } from './controller/physics.js';
 import { update } from './controller/update.js';
+import { initControlsLayout, enterEditMode } from './controller/controls-layout.js';
 import {
   drawBg, drawPlatform, drawNote, drawEnemy, drawPigeon,
   drawPrizeBox, drawBoxItem, drawPlayer, drawGirl, drawParticles, drawCaesar,
@@ -266,7 +267,15 @@ if (IS_TOUCH) {
     else                                             resetGame();
     syncUI();
   });
+  document.getElementById('btn-edit-controls')?.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    settingsPanel.classList.add('hidden');
+    enterEditMode();
+  });
 }
+
+// ── Init controls layout (mobile: load saved positions/size) ──────────────────
+initControlsLayout();
 
 // ── Action button (level-failed / level-complete / game-won / caesar-intro) ───
 const btnAction          = document.getElementById('btn-action');
@@ -318,12 +327,8 @@ function syncActionBtn() {
   }
   if (btnContribute) btnContribute.classList.toggle('hidden', !gameState.gameWon);
   if (winFeedback)   winFeedback.classList.toggle('hidden',   !gameState.gameWon);
-<<<<<<< HEAD
-  btnAction.classList.toggle('win-layout', !!gameState.gameWon);
-=======
   btnAction.classList.toggle('win-layout',    !!gameState.gameWon);
   btnAction.classList.toggle('caesar-layout', !!gameState.showCaesarIntro);
->>>>>>> d64f379c5d863f582397a1f6ff2521f3c77a9179
 }
 
 btnAction.addEventListener('pointerdown', e => {
@@ -339,10 +344,7 @@ btnAction.addEventListener('pointerdown', e => {
   else if (gameState.gameOver || gameState.gameWon) resetGame();
   btnAction.classList.add('hidden');
   btnAction.classList.remove('win-layout');
-<<<<<<< HEAD
-=======
   btnAction.classList.remove('caesar-layout');
->>>>>>> d64f379c5d863f582397a1f6ff2521f3c77a9179
   if (btnActionSecondary) btnActionSecondary.classList.add('hidden');
   if (btnContribute) btnContribute.classList.add('hidden');
   if (winFeedback)   winFeedback.classList.add('hidden');

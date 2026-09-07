@@ -144,7 +144,6 @@ export function update(dt) {
       if (gameState.levelComplete)                          nextLevel();
       else if (gameState.showCaesarIntro)                   { gameState.showCaesarIntro = false; }
       else if (gameState.gameOver && gameState.levelFailed) retryLevel();
-      else if (gameState.gameWon)                           resetGame();
     }
     gameState.restartHeld = true;
   } else {

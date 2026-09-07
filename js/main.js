@@ -175,6 +175,19 @@ if (btnBuyTreat) {
 if (new URLSearchParams(window.location.search).has('dev')) {
   const devRow = document.getElementById('dev-level-row');
   if (devRow) devRow.style.display = '';
+  const btnDevWin = document.getElementById('btn-dev-win');
+  if (btnDevWin) {
+    btnDevWin.style.display = '';
+    btnDevWin.addEventListener('click', () => {
+      gameState.gameWon      = true;
+      gameState.gameOver     = false;
+      gameState.celebrating  = false;
+      gameState.levelFailed  = false;
+      syncActionBtn();
+      syncUI();
+      settingsPanel.classList.add('hidden');
+    });
+  }
 }
 
 function syncLevelBtns() {
@@ -258,6 +271,8 @@ if (IS_TOUCH) {
 // ── Action button (level-failed / level-complete / game-won / caesar-intro) ───
 const btnAction          = document.getElementById('btn-action');
 const btnActionSecondary = document.getElementById('btn-action-secondary');
+const btnContribute      = document.getElementById('btn-contribute');
+const winFeedback        = document.getElementById('win-feedback');
 
 function syncActionBtn() {
   if (gameState.showCaesarIntro) {
@@ -301,6 +316,9 @@ function syncActionBtn() {
     btnAction.classList.add('hidden');
     if (btnActionSecondary) btnActionSecondary.classList.add('hidden');
   }
+  if (btnContribute) btnContribute.classList.toggle('hidden', !gameState.gameWon);
+  if (winFeedback)   winFeedback.classList.toggle('hidden',   !gameState.gameWon);
+  btnAction.classList.toggle('win-layout', !!gameState.gameWon);
 }
 
 btnAction.addEventListener('pointerdown', e => {
@@ -315,7 +333,10 @@ btnAction.addEventListener('pointerdown', e => {
   }
   else if (gameState.gameOver || gameState.gameWon) resetGame();
   btnAction.classList.add('hidden');
+  btnAction.classList.remove('win-layout');
   if (btnActionSecondary) btnActionSecondary.classList.add('hidden');
+  if (btnContribute) btnContribute.classList.add('hidden');
+  if (winFeedback)   winFeedback.classList.add('hidden');
   syncUI();
 });
 

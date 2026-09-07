@@ -1,8 +1,8 @@
-# 🎵 Mario Rush
+# 🎵 Ihdā': Shooo the Cooos! 🐦
 
-A music-themed Mario-style platformer built with vanilla HTML5 Canvas and Web Audio API. Collect musical notes, stomp enemies, hit prize boxes to answer music trivia quizzes, befriend a cat companion, and battle through 5 levels of escalating difficulty.
+A music-themed platformer built with vanilla HTML5 Canvas and Web Audio API. Collect musical notes, stomp enemies, hit prize boxes to answer music trivia quizzes, befriend a cat companion, and battle through 5 levels of escalating difficulty.
 
-**[▶ Play Now](https://kiruthikaaravindan.github.io/mario-rush/)**
+**[▶ Play Now](https://kiruthikaaravindan.github.io/ihda/)**
 
 ---
 
@@ -10,7 +10,7 @@ A music-themed Mario-style platformer built with vanilla HTML5 Canvas and Web Au
 
 | Action | Desktop | Mobile |
 |---|---|---|
-| Move | Arrow keys / A D | Drag joystick |
+| Move | Arrow keys / A D | ◀ ▶ buttons |
 | Jump | Space / Up / W | ▲ button |
 | Pet Caesar | E key | 🐾 button |
 | Give treat | F key | 🐟 button |
@@ -109,7 +109,7 @@ The **RESTART FROM L1** secondary button is always available and resets the full
 ## Features
 
 - **Responsive full-screen scaling** — fixed 800×450 canvas scaled via CSS transform to fill any screen
-- **Mobile-first touch controls** — virtual joystick + jump button, landscape lock, fullscreen
+- **Mobile-first touch controls** — ◀ ▶ move buttons + ▲ jump button, landscape lock, fullscreen
 - **Web Audio API** — synthesised background music + distinct SFX for every action
 - **Level-save / retry system** — retry the current level (costs points) without losing progress
 - **Caesar companion AI** — follows player, jumps over pits and onto platforms, catches pigeons during treat frenzy
@@ -151,7 +151,7 @@ mario-rush/
     │   ├── settings.js   # music/SFX toggle, localStorage
     │   └── state.js      # gameState, player, caesar, particles, media
     ├── controller/
-    │   ├── input.js      # keyboard + virtual joystick
+    │   ├── input.js      # keyboard + touch buttons
     │   ├── physics.js    # collision, resetGame, nextLevel, retryLevel
     │   └── update.js     # per-frame game logic
     └── view/
@@ -163,17 +163,17 @@ mario-rush/
 
 ## Running Locally
 
-ES Modules require HTTP — open via a local server, not `file://`:
+ES Modules require HTTP — open via a local server, not `file://`. Run from the repo root:
 
 ```bash
-# Python
-python -m http.server 8080
-
 # Node
-npx serve .
+npx http-server -p 8000 -c-1
+
+# Python (if installed)
+python -m http.server 8000
 ```
 
-Then open `http://localhost:8080/mario-rush/`.
+Then open `http://localhost:8000/`.
 
 ---
 

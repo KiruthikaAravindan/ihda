@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JS syntax check
+        run: |
+          echo "Checking JS syntax..."
+          find js -name "*.js" | while read f; do
+            node --check "$f" || { echo "FAIL: $f"; exit 1; }
+          done
+          echo "All JS files OK"
+
+      - name: HTML syntax check
+        run: |
+          echo "Checking HTML..."
+          node -e "
+            const fs = require('fs');
+            const html = fs.readFileSync('index.html', 'utf8');
+            const open  = (html.match(/<[a-z][^/]*>/gi) || []).length;
+            const close = (html.match(/<\/[a-z]+>/gi) || []).length;
+            console.log('Tags — open:', open, ' close:', close);
+            // Basic: check no unclosed <script> or <style>
+            if ((html.match(/<script/gi)||[]).length !== (html.match(/<\/script>/gi)||[]).length)
+              { console.error('Mismatched <script> tags'); process.exit(1); }
+            if ((html.match(/<style/gi)||[]).length !== (html.match(/<\/style>/gi)||[]).length)
+              { console.error('Mismatched <style> tags'); process.exit(1); }
+            console.log('HTML check passed');
+          "
+
+      - name: No secrets check
+        run: |
+          echo "Scanning for accidental secrets..."
+          if grep -rE "ghp_[a-zA-Z0-9]{36}|ANTHROPIC_API_KEY\s*=\s*sk-" --include="*.js" --include="*.html" --include="*.css" --include="*.json" .; then
+            echo "ERROR: Possible secret found in source files"
+            exit 1
+          fi
+          echo "No secrets found"

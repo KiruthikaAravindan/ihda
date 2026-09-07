@@ -528,3 +528,68 @@ body.is-touch .mobile-menu-actions { display: flex; }
   margin-bottom: 10px;
   text-align: right;
 }
+
+/* ── Controls layout editor bar (mobile edit mode) ───────────────────────── */
+#ctrl-layout-bar {
+  position: absolute;
+  top: 38px; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(5, 0, 20, 0.93);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 12px;
+  pointer-events: all;
+}
+#ctrl-layout-bar.visible { display: flex; }
+
+.ctrl-bar-label {
+  color: #aef;
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+#ctrl-size {
+  width: 80px;
+  accent-color: #ee66ff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#btn-ctrl-reset,
+#btn-ctrl-done {
+  background: rgba(255,255,255,0.08);
+  color: #ddd;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  pointer-events: all;
+  touch-action: none;
+  flex-shrink: 0;
+}
+#btn-ctrl-done {
+  background: rgba(80, 200, 80, 0.18);
+  border-color: rgba(80, 200, 80, 0.55);
+  color: #aaffaa;
+  margin-left: auto;
+}
+#btn-ctrl-reset:active, #btn-ctrl-done:active { opacity: 0.65; }
+
+/* Draggable buttons in edit mode — dashed purple border, grab cursor */
+.tbtn.ctrl-edit {
+  border-style: dashed !important;
+  border-color: rgba(238, 102, 255, 0.85) !important;
+  background: rgba(238, 102, 255, 0.18) !important;
+  cursor: grab !important;
+  opacity: 0.9;
+}

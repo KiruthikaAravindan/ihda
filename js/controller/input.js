@@ -84,7 +84,10 @@ if (!IS_TOUCH) {
 function bindBtn(id, code) {
   const el = document.getElementById(id);
   if (!el) return;
-  const press   = e => { e.preventDefault(); resumeAudio(); keys[code] = true;  el.classList.add('pressed'); };
+  const press   = e => {
+    if (document.getElementById('ctrl-layout-bar')?.classList.contains('visible')) return;
+    e.preventDefault(); resumeAudio(); keys[code] = true;  el.classList.add('pressed');
+  };
   const release = () => { keys[code] = false; el.classList.remove('pressed'); };
   el.addEventListener('pointerdown',   press);
   el.addEventListener('pointerup',     release);

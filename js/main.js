@@ -7,6 +7,7 @@ import { platforms, coins, enemies, prizeBoxes, pigeons, boxItems } from './mode
 import './controller/input.js';
 import { resetGame, nextLevel, jumpToLevel, retryLevel } from './controller/physics.js';
 import { update } from './controller/update.js';
+import { initControlsLayout, enterEditMode } from './controller/controls-layout.js';
 import {
   drawBg, drawPlatform, drawNote, drawEnemy, drawPigeon,
   drawPrizeBox, drawBoxItem, drawPlayer, drawGirl, drawParticles, drawCaesar,
@@ -266,7 +267,15 @@ if (IS_TOUCH) {
     else                                             resetGame();
     syncUI();
   });
+  document.getElementById('btn-edit-controls')?.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    settingsPanel.classList.add('hidden');
+    enterEditMode();
+  });
 }
+
+// ── Init controls layout (mobile: load saved positions/size) ──────────────────
+initControlsLayout();
 
 // ── Action button (level-failed / level-complete / game-won / caesar-intro) ───
 const btnAction          = document.getElementById('btn-action');

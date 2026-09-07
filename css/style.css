@@ -292,6 +292,7 @@ body.is-touch .touch-hints { display: flex; }
 }
 #btn-action.hidden { display: none; }
 #btn-action.win-layout { bottom: 110px; }
+#btn-action.caesar-layout { bottom: 52px; }
 
 /* Secondary action button — shown below primary when level fails */
 #btn-action-secondary {

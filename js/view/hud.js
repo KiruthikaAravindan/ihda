@@ -258,21 +258,21 @@ export function drawCaesarIntro() {
   const cx = CANVAS_W / 2;
 
   ctx.fillStyle = '#FFD700'; ctx.font = 'bold 36px Courier New';
-  ctx.fillText('CAESAR IS YOUR COMPANION!', cx, 90);
+  ctx.fillText('CAESAR IS YOUR COMPANION!', cx, 74);
 
   ctx.fillStyle = '#e08830'; ctx.font = '56px Arial';
-  ctx.fillText('🐱', cx, 168);
+  ctx.fillText('🐱', cx, 142);
 
   ctx.fillStyle = '#ee66ff'; ctx.font = 'bold 18px Courier New';
-  ctx.fillText('You have befriended Caesar the cat!', cx, 222);
+  ctx.fillText('You have befriended Caesar the cat!', cx, 194);
 
   ctx.fillStyle = '#fff'; ctx.font = '16px Courier New';
-  ctx.fillText('He can hunt pigeons for you — feed him a treat', cx, 260);
-  ctx.fillText('and he will go into a pigeon-catching frenzy!', cx, 284);
+  ctx.fillText('He can hunt pigeons for you — feed him a treat', cx, 234);
+  ctx.fillText('and he will go into a pigeon-catching frenzy!', cx, 256);
 
   ctx.fillStyle = '#FFD700'; ctx.font = 'bold 15px Courier New';
-  ctx.fillText('Treats can be bought from the Inventory (🎒 icon in the top bar)', cx, 328);
+  ctx.fillText('Treats can be bought from the Inventory (🎒 icon in the top bar)', cx, 292);
 
   ctx.fillStyle = '#aef'; ctx.font = '14px Courier New';
-  ctx.fillText('Press  SPACE / R  or click  ▶ START LEVEL 4  to begin', cx, 372);
+  ctx.fillText('Press  SPACE / R  or click  ▶ START LEVEL 4  to begin', cx, 312);
 }

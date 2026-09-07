@@ -187,6 +187,9 @@ export function nextLevel() {
   gameState.levelStartScore  = gameState.score; // bank for next level's retry cost
   gameState.treatButtonCooldown = 0;
   clearQuiz();
+  initLevel(next);            // rebuild platforms/coins/enemies/boxes for the new level
+  applyCaesarForLevel(next);
+  resetPlayer();              // move player back to the start + reset camera
 }
 
 export function retryLevel() {

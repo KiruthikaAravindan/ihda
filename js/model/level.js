@@ -113,9 +113,9 @@ const L1_BOX_DEFS = [
 // ── Level 2 ───────────────────────────────────────────────────────────────────
 const L2_PLATFORMS = [
   // Ground [0-5]
-  { x: 0,    y: 400, w: 550,  h: 50 },
+  { x: 0,    y: 400, w: 580,  h: 50 },   // widened: gap [0]→[1] was 150px (too wide on touch), now 120px
   { x: 700,  y: 400, w: 480,  h: 50 },
-  { x: 1340, y: 400, w: 420,  h: 50 },
+  { x: 1300, y: 400, w: 460,  h: 50 },   // shifted left: gap [1]→[2] was 160px (impossible on touch), now 120px; w increased to keep right edge at 1760
   { x: 1870, y: 400, w: 570,  h: 50 },   // was x:1940 — 3rd bridge shortened to 130px
   { x: 2650, y: 400, w: 480,  h: 50 },
   { x: 3600, y: 400, w: 1100, h: 50 },

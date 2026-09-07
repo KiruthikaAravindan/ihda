@@ -7,6 +7,7 @@ import { overlap, playerHit, resolveVsWorld, resetPlayer, resetGame, nextLevel, 
 
 const SPEED = 5.5;
 const JUMP  = -11;
+const DEV   = new URLSearchParams(window.location.search).has('dev');
 
 // ── Reward helpers ─────────────────────────────────────────────────────────────
 
@@ -238,9 +239,11 @@ export function update(dt) {
   resolveVsWorld();
 
   if (player.y > 570) {
-    gameState.lives--;
     SFX.hit();
-    if (gameState.lives <= 0) { gameState.gameOver = true; gameState.levelFailed = true; SFX.gameOver(); return; }
+    if (!DEV) {
+      gameState.lives--;
+      if (gameState.lives <= 0) { gameState.gameOver = true; gameState.levelFailed = true; SFX.gameOver(); return; }
+    }
     resetPlayer();
   }
 
@@ -328,9 +331,11 @@ export function update(dt) {
       const pgHit = { x: pg.x + pg.w * 0.2, y: pg.y + pg.h * 0.2, w: pg.w * 0.6, h: pg.h * 0.6 };
       if (!overlap(ph, pgHit)) continue;
       player.invincible = 100;
-      gameState.lives--;
       SFX.hit();
-      if (gameState.lives <= 0) { gameState.gameOver = true; gameState.levelFailed = true; SFX.gameOver(); }
+      if (!DEV) {
+        gameState.lives--;
+        if (gameState.lives <= 0) { gameState.gameOver = true; gameState.levelFailed = true; SFX.gameOver(); }
+      }
     }
   }
 
@@ -366,9 +371,11 @@ export function update(dt) {
       burst(e.x + e.w / 2, e.y + e.h / 2, '#8B4513');
     } else if (player.invincible <= 0 && player.shieldTimer <= 0 && overlap(ph, e)) {
       player.invincible = 100;
-      gameState.lives--;
       SFX.hit();
-      if (gameState.lives <= 0) { gameState.gameOver = true; gameState.levelFailed = true; SFX.gameOver(); }
+      if (!DEV) {
+        gameState.lives--;
+        if (gameState.lives <= 0) { gameState.gameOver = true; gameState.levelFailed = true; SFX.gameOver(); }
+      }
     }
   }
 

@@ -318,7 +318,12 @@ function syncActionBtn() {
   }
   if (btnContribute) btnContribute.classList.toggle('hidden', !gameState.gameWon);
   if (winFeedback)   winFeedback.classList.toggle('hidden',   !gameState.gameWon);
+<<<<<<< HEAD
   btnAction.classList.toggle('win-layout', !!gameState.gameWon);
+=======
+  btnAction.classList.toggle('win-layout',    !!gameState.gameWon);
+  btnAction.classList.toggle('caesar-layout', !!gameState.showCaesarIntro);
+>>>>>>> d64f379c5d863f582397a1f6ff2521f3c77a9179
 }
 
 btnAction.addEventListener('pointerdown', e => {
@@ -334,6 +339,10 @@ btnAction.addEventListener('pointerdown', e => {
   else if (gameState.gameOver || gameState.gameWon) resetGame();
   btnAction.classList.add('hidden');
   btnAction.classList.remove('win-layout');
+<<<<<<< HEAD
+=======
+  btnAction.classList.remove('caesar-layout');
+>>>>>>> d64f379c5d863f582397a1f6ff2521f3c77a9179
   if (btnActionSecondary) btnActionSecondary.classList.add('hidden');
   if (btnContribute) btnContribute.classList.add('hidden');
   if (winFeedback)   winFeedback.classList.add('hidden');
@@ -388,6 +397,7 @@ canvas.addEventListener('pointerdown', e => {
 // ── Pause on focus loss ───────────────────────────────────────────────────────
 function isActiveGameplay() {
   return welcomeModal.classList.contains('hidden') &&
+         !gameState.showCaesarIntro &&
          !gameState.gameOver && !gameState.gameWon && !gameState.levelComplete;
 }
 

@@ -187,22 +187,22 @@ export function drawOverlay() {
       drawBestLine(cy + 56);
     }
   } else if (gameState.gameWon) {
-    ctx.fillStyle = '#FFD700'; ctx.font = 'bold 68px Courier New';
-    ctx.fillText('YOU WIN!', CANVAS_W / 2, cy - 64);
-    ctx.fillStyle = '#fff'; ctx.font = '28px Courier New';
-    ctx.fillText(`Final Score: ${gameState.score}`, CANVAS_W / 2, cy - 12);
-    ctx.fillText(`Notes: ${gameState.coinCount} / ${coins.length}`, CANVAS_W / 2, cy + 24);
-    drawBestLine(cy + 66);
+    ctx.fillStyle = '#FFD700'; ctx.font = 'bold 48px Courier New';
+    ctx.fillText('YOU WIN!', CANVAS_W / 2, cy - 72);
+    ctx.fillStyle = '#fff'; ctx.font = '20px Courier New';
+    ctx.fillText(`Final Score: ${gameState.score}`, CANVAS_W / 2, cy - 30);
+    ctx.fillText(`Notes: ${gameState.coinCount} / ${coins.length}`, CANVAS_W / 2, cy + 0);
+    drawBestLine(cy + 36);
   }
 }
 
 function drawBestLine(y) {
   ctx.textAlign = 'center';
   if (gameState.newBest) {
-    ctx.fillStyle = '#FFD700'; ctx.font = 'bold 24px Courier New';
+    ctx.fillStyle = '#FFD700'; ctx.font = 'bold 18px Courier New';
     ctx.fillText(`★ NEW BEST: ${gameState.bestScore} ★`, CANVAS_W / 2, y);
   } else {
-    ctx.fillStyle = '#aef'; ctx.font = '22px Courier New';
+    ctx.fillStyle = '#aef'; ctx.font = '18px Courier New';
     ctx.fillText(`Best: ${gameState.bestScore}`, CANVAS_W / 2, y);
   }
 }

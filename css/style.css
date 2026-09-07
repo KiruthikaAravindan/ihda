@@ -267,7 +267,7 @@ body.is-touch .touch-hints { display: flex; }
 /* ── Action button — shown on game-over / level-complete (both desktop + mobile) ── */
 #btn-action {
   position: absolute;
-  bottom: 64px;
+  bottom: 72px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -291,6 +291,7 @@ body.is-touch .touch-hints { display: flex; }
   box-shadow: 0 0 14px rgba(233,69,96,0.4);
 }
 #btn-action.hidden { display: none; }
+#btn-action.win-layout { bottom: 110px; }
 
 /* Secondary action button — shown below primary when level fails */
 #btn-action-secondary {
@@ -315,6 +316,49 @@ body.is-touch .touch-hints { display: flex; }
 }
 #btn-action-secondary:active { background: rgba(60, 20, 120, 0.88); }
 #btn-action-secondary.hidden { display: none; }
+
+/* ── Contribute link — shown on win screen only ── */
+#btn-contribute {
+  position: absolute;
+  bottom: 46px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(20, 10, 50, 0.88);
+  color: #88ccff;
+  border: 1px solid #446688;
+  border-radius: 10px;
+  padding: 8px 28px;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  pointer-events: all;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.1s;
+}
+#btn-contribute:hover  { background: rgba(40, 20, 80, 0.95); }
+#btn-contribute:active { background: rgba(60, 30, 100, 0.95); }
+#btn-contribute.hidden { display: none; }
+
+/* ── Win screen feedback text — sits between PLAY AGAIN and Contribute ── */
+#win-feedback {
+  position: absolute;
+  bottom: 88px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: #aaa;
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  white-space: nowrap;
+  pointer-events: none;
+  text-align: center;
+}
+#win-feedback.hidden { display: none; }
 
 /* ── Settings panel (centered overlay) ── */
 #settings-panel,
